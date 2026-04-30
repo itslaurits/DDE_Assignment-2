@@ -1,0 +1,10 @@
+streamlit>=1.35.0
+pandas
+openpyxl
+plotly
+streamlit-aggrid==0.3.4
+python-dotenv
+requests
+numpy
+openai
+scipy
