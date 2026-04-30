@@ -28,7 +28,7 @@ st.markdown("""
 st.caption("People = board members / managing directors per company")
 
 # ── Local Filters ─────────────────────────────────────────────────────────────
-with st.expander("⚙️ People Filters", expanded=False):
+with st.expander("⚙️ People Filters", expanded=True):
     pf1, pf2, pf3 = st.columns(3)
     with pf1:
         gender_radio = st.radio(

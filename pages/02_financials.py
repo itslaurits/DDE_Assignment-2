@@ -27,7 +27,7 @@ EQ_COL     = "Equity ratio last avail. year"
 EMP_COL    = "Number of employees 2024"
 
 # ── Local Filters ─────────────────────────────────────────────────────────────
-with st.expander("⚙️ Advanced Filters", expanded=False):
+with st.expander("⚙️ Advanced Filters", expanded=True):
     flt_col1, flt_col2, flt_col3 = st.columns([2, 1, 2])
 
     rev_data = df[REV_COL].dropna() / 1000  # M EUR

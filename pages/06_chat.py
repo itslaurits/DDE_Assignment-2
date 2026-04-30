@@ -49,9 +49,9 @@ suggestions = [
     "Which sectors are structurally loss-making?",
 ]
 
-cols = st.columns(4)
+cols = st.columns(3)
 for i, s in enumerate(suggestions):
-    with cols[i % 4]:
+    with cols[i % 3]:
         if st.button(s, key=f"sug_{i}", use_container_width=True):
             st.session_state["pending_question"] = s
 
@@ -99,11 +99,18 @@ if prompt := st.chat_input("Ask me anything about Essen companies…"):
     ]
 
 # ── Footer ────────────────────────────────────────────────────────────────────
-st.markdown("<hr style='border-color:#E5E5E5;margin:24px 0'>", unsafe_allow_html=True)
+n_msg = len(st.session_state["chat_history"]) // 2
 fc1, fc2 = st.columns([3, 1])
 with fc1:
-    n_msg = len(st.session_state["chat_history"]) // 2
-    st.caption(f"💬 {n_msg} questions this session · Context: last 10 messages")
+    st.markdown(
+        f"<div style='display:inline-flex;align-items:center;gap:8px;"
+        f"background:#F7F7F7;border:1px solid #E5E5E5;border-radius:999px;"
+        f"padding:4px 14px;font-size:12px;color:#666666;font-family:Inter,sans-serif;'>"
+        f"💬 <span>{n_msg} question{'s' if n_msg != 1 else ''} this session</span>"
+        f"<span style='color:#D0D0D0'>·</span>"
+        f"<span>last 10 messages as context</span></div>",
+        unsafe_allow_html=True,
+    )
 with fc2:
     if st.button("🗑️ Clear chat", use_container_width=True):
         st.session_state["chat_history"] = []

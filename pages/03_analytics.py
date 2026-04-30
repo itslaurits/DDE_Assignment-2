@@ -142,6 +142,7 @@ with tabs[0]:
     )
 
     if run_explorer:
+        st.toast("Running analysis…", icon="⏳")
         edf = df.copy()
         if groupby_options[sel_groupby] == "__growth_type__":
             edf["__growth_type__"] = dominant_growth_type(edf)

@@ -44,23 +44,19 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
 
-    # ── Grok API Key ─────────────────────────────────────────────────────────
-    st.markdown("""<div style="font-size:11px;font-weight:600;letter-spacing:0.07em;
-        color:#999999;text-transform:uppercase;margin-bottom:6px;">AI Agent</div>""",
-        unsafe_allow_html=True)
-
-    st.text_input(
-        "Groq API Key",
-        type="password",
-        placeholder="gsk_...",
-        help="Get your key at console.groq.com/keys",
-        key="groq_api_key",
-        label_visibility="collapsed",
-    )
-    if st.session_state.get("groq_api_key"):
-        st.caption("🟢 Groq active · switch to Chat tab")
-    else:
-        st.caption("⚪ No key · Chat disabled")
+    with st.expander("🤖 AI Agent", expanded=False):
+        st.text_input(
+            "Groq API Key",
+            type="password",
+            placeholder="gsk_...",
+            help="Get your free key at console.groq.com/keys",
+            key="groq_api_key",
+            label_visibility="collapsed",
+        )
+        if st.session_state.get("groq_api_key"):
+            st.caption("🟢 Groq active · go to Chat tab")
+        else:
+            st.caption("⚪ Enter key to enable Chat")
 
     st.divider()
 

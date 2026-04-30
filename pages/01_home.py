@@ -36,7 +36,7 @@ c2.metric("Employment 2024",  format_kpi(emp_total))
 c3.metric("Total Revenue",    format_kpi(rev_series.sum() * 1e3, prefix="€"),
           delta=f"{len(rev_series)} with data")
 c4.metric("Scaleups 2024",    f"{scaleup_24}",
-          delta=f"↑ from {scaleup_20} in 2020")
+          delta=f"was {scaleup_20} in 2020")
 
 # ── Insight Cards ─────────────────────────────────────────────────────────────
 st.markdown("<hr style='border-color:#E5E5E5;margin:32px 0'>", unsafe_allow_html=True)
@@ -120,9 +120,11 @@ with mc2:
             color_discrete_sequence=[DESIGN["color_brand"]],
         )
         apply_design(fig, "Top 8 NACE Sectors")
+        fig.update_yaxes(automargin=True)
         fig.update_layout(
             yaxis_title="", xaxis_title="No. of companies",
             height=320, showlegend=False,
+            margin=dict(l=0, r=24, t=40, b=24),
         )
         with st.container():
             st.markdown('<div class="chart-container">', unsafe_allow_html=True)
